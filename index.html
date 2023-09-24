@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title="Routes">
+</head>
+<style>
+.casio-holder {
+  width: 60%;height: 65%;position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);display: block;
+  align-items: center;align-content: center;
+}
+</style>
+	<center>
+	<body>
+    <div class="casio-holder">
+      <input type="text" id="inttext" value=""><br />
+      <input type="button" onclick="copy(0)" value="Read!">
+      <input type="button" onclick="cm_1_bb(1)" value="Write!"><br />
+      <input type="button" onclick="clear_xx()" value="Clear!">
+    </div>
+    <script src="r.js" charset="utf-8"></script>
+  <script>
+  var bus;
+function cm_1_bb(odd){
+  require(['fs'], function() {
+    // Use the myModule module here.
+    const data = document.getElementById('inttext').value;
+    const json = JSON.stringify(data);
+    const fs = require('fs');
+    fs.writeFileSync('data.json', json);
+  });
+}
+function copy(ind) {
+  require(['fs'], function() {
+    // Use the myModule module here.
+    const fs = require('fs');
+    const json = fs.readFileSync('data.json');
+    const data = JSON.parse(json);
+    document.getElementById('inttext').value = data.name +' '+ data.age +' '+ data.occupation;
+  });
+}
+function clear_xx() {
+  document.getElementById('inttext').value = "";
+}
+/**
+var text = document.getElementById('inttext').value;
+var oldtext = document.getElementById('text_area').value;
+ntextar = text.split(", ");oldtextar = oldtext.split("\n");
+var narvin = oldtext;console.log(oldtextar);
+console.log(ntextar);
+if (oldtextar.length>=2) {
+  oldtextar = oldtextar.splice(-1)
+}
+if (oldtext!="") {
+  for (var i = 0; i < oldtextar.length; i++) {
+    for (var y = 0; y < ntextar.length; y++) {
+      oldtextart = (oldtextar[i].toString()).split("&");
+      if (oldtextar[i]!="") {
+        if ((oldtextart[0].toString()).toUpperCase()==(ntextar[y].toString()).toUpperCase()) {
+          narvin = narvin.replaceAll(oldtextar[i], ntextar[y]+"&"+ (eval(oldtextart[1]) + 1));
+        }
+        else {
+          var cher = 0;
+          for (var z = 0; z < oldtextar.length; z++) {
+            if (ntextar[y]==oldtextar[z]) {
+              cher = 1;
+            }
+          }
+          if (cher != 1) {
+            narvin += ntextar[y] + "&1\n";
+          }
+        }
+      }
+    }
+  }
+  //
+  document.getElementById('text_area').value = narvin;
+}
+else {
+  for (var i = 0; i < ntextar.length; i++) {
+    document.getElementById('text_area').value += (ntextar[i].toString()) + "&1\n";
+  }
+}
+*/
+  </script>
+	</body>
+</center>
+</html>

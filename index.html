@@ -26,14 +26,14 @@ function cm_1_bb(odd){
     const data = document.getElementById('inttext').value;
     const json = JSON.stringify(data);
     const fs = require('fs');
-    fs.writeFileSync('data.json', json);
+    fs.writeFileSync('fs.json', json);
   });
 }
 function copy(ind) {
   require(['fs'], function() {
     // Use the myModule module here.
     const fs = require('fs');
-    const json = fs.readFileSync('data.json');
+    const json = fs.readFileSync('fs.json');
     const data = JSON.parse(json);
     document.getElementById('inttext').value = data.name +' '+ data.age +' '+ data.occupation;
   });
